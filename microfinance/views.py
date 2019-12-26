@@ -56,8 +56,9 @@ def acceuil(request):
 	comptes_list = Compte.objects.count()
 	depots_list = Depot.objects.count()
 	retraits_list = Retrait.objects.count()
+	users_list = User.objects.count()
 	return render(request, 'microfinance/acceuil.html', {"agences": agences_list, "clients": clients_list, 
-		"comptes": comptes_list, "depots": depots_list, "retraits": retraits_list, })
+		"comptes": comptes_list, "depots": depots_list, "retraits": retraits_list, "users": users_list, })
 
 
 
