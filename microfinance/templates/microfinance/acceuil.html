@@ -1,0 +1,86 @@
+{% extends 'microfinance/base.html' %}
+
+{% block title %}ACCEUIL{% endblock %}
+
+
+
+{% block content %}
+							<div class="row">
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">{{ agences }}</span>
+                                            Agences
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">0</span>
+                                            Personnels
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-cube-outline"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">0</span>
+                                            Groupes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-currency-btc"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">{{ clients }}</span>
+                                            Membres
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-bookmark"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">0</span>
+                                            Entreprises
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-blinds"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">{{ comptes }}</span>
+                                            Comptes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-arrow-compress-all"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">0</span>
+                                            Dépôts
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="mini-stat clearfix bg-primary">
+                                        <span class="mini-stat-icon"><i class="mdi mdi-bowling"></i></span>
+                                        <div class="mini-stat-info text-right text-white">
+                                            <span class="counter">0</span>
+                                            Retraits
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+{% endblock %}

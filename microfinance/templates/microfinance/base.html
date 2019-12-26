@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    
+    <!-- Mirrored from themesdesign.in/admiry/red/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 13:21:30 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>{% block title %}{% endblock %} - EMF</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="ThemeDesign" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!--link rel="shortcut icon" href="{% static 'assets/images/favicon.ico"-->
+
+        <!-- DataTables -->
+        <link href="{% static 'assets/plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="{% static 'assets/plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css">
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Loader -->
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+                    <i class="ion-close"></i>
+                </button>
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <!--<a href="index.html" class="logo">Admiry</a>-->
+                        <!--a href="index.html" class="logo"><img src="{% static 'assets/images/logo.png" height="42" alt="logo"></a-->
+                    </div>
+                </div>
+
+                <div class="sidebar-inner slimscrollleft">
+
+                    <div class="user-details">
+                        <div class="text-center">
+                            
+                            <img src="{% static 'assets/images/users/avatar-1.jpg' %}" alt="" class="rounded-circle">
+                            
+                        </div>
+                        <div class="user-info">
+                            <h4 class="font-16">{{ user.username }}</h4>
+                            <span class="text-muted user-status"><i class="fa fa-dot-circle-o text-success"></i> Online</span>
+                        </div>
+                    </div>
+
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li>
+                                <a href="{% url 'microfinance:acceuil' %}" class="waves-effect">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Dashboard <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cart-outline"></i> <span> Agence </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'microfinance:agence_list' %}"><i class="mdi mdi-check-all"></i>Liste</a></li>
+                                    <li><a href="{% url 'microfinance:agence_create' %}"><i class="mdi mdi-check"></i>Ajouter</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-currency-usd"></i> <span> Personnel </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'microfinance:personnel_list' %}">Liste</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cube-outline"></i> <span> Groupes </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="ui-buttons.html">Liste</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-currency-btc"></i> <span> Membres </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'microfinance:client_list' %}"><i class="mdi mdi-check-all"></i>Liste</a></li>
+                                    <li><a href="{% url 'microfinance:client_create' %}"><i class="mdi mdi-check"></i>Ajouter</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bookmark"></i> <span> Entreprises </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="ui-buttons.html">Liste</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-blinds"></i> <span> Comptes </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'microfinance:typecompte_list' %}"><i class="mdi mdi-check-all"></i>Types de Compte</a></li>
+                                    <li><a href="{% url 'microfinance:typecompte_create' %}"><i class="mdi mdi-check-all"></i>Ajouter un Type</a></li>
+                                    <li><a href="{% url 'microfinance:compte_list' %}"><i class="mdi mdi-check-all"></i>Liste des Comptes</a></li>
+                                    <li><a href="{% url 'microfinance:compte_create' %}"><i class="mdi mdi-check-all"></i>Ajouter un Compte</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-arrow-compress-all"></i> <span> Transactions </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="ui-buttons.html">Dépôts</a></li>
+                                    <li><a href="ui-buttons.html">Retraits</a></li>
+                                    <li><a href="ui-buttons.html">Epargnes</a></li>
+                                    <!--li><a href="ui-buttons.html">Prêts</a></li-->
+                                </ul>
+                            </li>
+
+                            
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- end sidebarinner -->
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+
+                    <!-- Top Bar Start -->
+                    <div class="topbar">
+
+                        <nav class="navbar-custom">
+
+                            <ul class="list-inline float-right mb-0">
+                                <li class="list-inline-item dropdown notification-list">
+                                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
+                                       aria-haspopup="false" aria-expanded="false">
+                                        <i class="ion-ios7-bell noti-icon"></i>
+                                        <span class="badge badge-success noti-icon-badge">3</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+                                        <!-- item-->
+                                        <div class="dropdown-item noti-title">
+                                            <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
+                                        </div>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+                                            <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-primary"><i class="mdi mdi-message"></i></div>
+                                            <p class="notify-details"><b>New Message received</b><small class="text-muted">You have 87 unread messages</small></p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-primary"><i class="mdi mdi-martini"></i></div>
+                                            <p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
+                                        </a>
+
+                                        <!-- All-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                            View All
+                                        </a>
+
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item dropdown notification-list">
+                                    <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+                                       aria-haspopup="false" aria-expanded="false">
+                                        <img src="{% static 'assets/images/users/avatar-1.jpg' %}" alt="user" class="rounded-circle">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profil</a>
+                                        <a class="dropdown-item" href="#"><span class="badge badge-success pull-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Paramètres</a>
+                                        <a class="dropdown-item" href="{% url 'microfinance:logout' %}"><i class="mdi mdi-logout m-r-5 text-muted"></i> Déconnexion</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <ul class="list-inline menu-left mb-0">
+                                <li class="list-inline-item">
+                                    <button type="button" class="button-menu-mobile open-left waves-effect">
+                                        <i class="ion-navicon"></i>
+                                    </button>
+                                </li>
+                                <li class="hide-phone list-inline-item app-search">
+                                    <h3 class="page-title">Dashboard</h3>
+                                </li>
+                            </ul>
+
+                            <div class="clearfix"></div>
+
+                        </nav>
+
+                    </div>
+                    <!-- Top Bar End -->
+
+                    <div class="page-content-wrapper ">
+
+                        {% block content %}{% endblock %}
+
+                    </div> <!-- Page content Wrapper -->
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    © 2019 - 2020 EMF - Par NKANA Entreprises.
+                </footer>
+
+            </div>
+            <!-- End Right content here -->
+
+            </div>
+            <!-- End Right content here -->
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/tether.min.js' %}"></script><!-- Tether for Bootstrap -->
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'assets/js/detect.js' %}"></script>
+        <script src="{% static 'assets/js/fastclick.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'assets/js/waves.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+
+        <!--Morris Chart-->
+        <script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/raphael/raphael-min.js' %}"></script>
+
+        <script src="{% static 'assets/pages/dashborad.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.js' %}"></script>
+
+        {% block javascript %}
+        <script>
+        $( document ).ready( function() {
+            // On affiche le calendrier lorsqu'on clique sur le champ date de naissance
+            /*$('#dateouverture').click(function(){
+                $(this).parent().data("DateTimePicker").show();
+            });*/
+            // On teste la valeur de la date et on la force à vide si elle est mauvaise
+            $('#dateouverture').change(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var val = $(this).val();
+                var format = new RegExp("^\\d{2}\/\\d{2}\/\\d{4}$");
+                if(!format.test(val)) {
+                    $(this).val("");
+                }
+            });
+            // Afficher l'onglet suivant en cliquant sur le bouton suivant
+            $('.btnNext').click(function(){
+                $('.nav-tabs > .active + li a').trigger('click');
+                $(".nav-tabs + .tab-content").find(":input:visible:first").focus();
+            });
+            // Afficher l'onglet précédent en cliquant sur le bouton précédent
+            $('.btnPrevious').click(function(){
+                $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+                $(".nav-tabs + .tab-content").find(":input:visible:first").focus();
+            });
+        });
+        </script>
+        {% endblock %}
+
+
+        <!-- Required datatable js' %} -->
+        <script src="{% static 'assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'assets/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/js' %}zip.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'assets/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+
+        <!-- Datatable init js' %} -->
+        <script src="{% static 'assets/pages/datatables.init.js' %}"></script>
+
+
+
+    </body>
+
+<!-- Mirrored from themesdesign.in/admiry/red/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 13:21:30 GMT -->
+</html>

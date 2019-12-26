@@ -1,0 +1,127 @@
+{% extends 'microfinance/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %}Voir Détail Compte{% endblock %}
+
+{% block content %}
+
+    
+
+                       <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <div class="media">
+                                                <img class="d-flex mr-3 rounded-circle img-thumbnail thumb-lg" src="{% static 'assets/images/users/avatar-1.jpg' %}" alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="mt-0 font-18 mb-1">Compte N°/ {{ object.numero }}</h5>
+                                                    <p class="text-muted font-14">Agence : {{ object.agence }}</p>
+
+                                                    <ul class="social-links list-inline mb-0">
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fa fa-phone"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fa fa-skype"></i></a>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+
+
+                            </div> <!-- end row -->
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <h4 class="mt-0 header-title">Détails Compte N°/ {{ object.numero }}</h4>
+
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Informations sur le compte </a>
+                                                </li>
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane active p-3" id="home" role="tabpanel">
+                                                    <h4 class="mt-0 header-title">Infos Basiques</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Agence :</strong><br> {{ object.agence }}.<br>
+                                                        <strong>Nature du Compte :</strong><br> {{ object.typecompte }}<br>
+                                                        <strong>Gestionnaire :</strong><br> {{ object.gestionnaire }}<br>
+                                                        <strong>Titulaire :</strong><br> {{ object.client.get_full_name }}<br>
+                                                        <strong>N°/ Cpte :</strong><br> {{ object.numero }}<br>
+                                                        <strong>N°/ Cpte Intérêts :</strong><br> {{ object.numcpte }}<br>
+                                                    </p><br>
+
+                                                    <h4 class="mt-0 header-title">Infos Compte</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Ouverture :</strong><br> {{ object.ouverture }}.<br>
+                                                        <strong>Clôture :</strong><br> {{ object.cloture }}<br>
+                                                        <strong>Intitulé :</strong><br> {{ object.intitule }}<br>
+                                                        <strong>Statut :</strong><br> {{ object.statut }}<br>
+                                                    </p><br>
+
+                                                    <h4 class="mt-0 header-title">Infos Persos</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Matricule :</strong><br> {{ object.matricule }}.<br>
+                                                        <strong>Montant Cartonné :</strong><br> {{ object.montancartone }}<br>
+                                                        <strong>Découvert autorisé :</strong><br> {{ object.decouvertauto }}<br>
+                                                        <strong>Début :</strong><br> {{ object.debut }}<br>
+                                                        <strong>Fin :</strong><br> {{ object.fin }}<br>
+                                                    </p><br>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="card m-b-20">
+                                        <h4 class="mt-0 header-title">Opérations sur le Compte</h4>
+                                        <!--img class="card-img-top img-fluid" src="{{ object.signature.url }}" alt="Votre signature"-->
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Agence | {{ object.agence }} | {{ object.agence.pincode }}</li>
+                                            <li class="list-group-item">Statut Client | {{ object.status }}</li>
+                                            <li class="list-group-item">Code Pin Client | {{ object.pincode }}</li>
+                                            <li class="list-group-item">Etat Client | {% if object.is_active %} Actif {% else %} Non Actif {% endif %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- end row -->
+
+
+
+
+                        </div><!-- container-fluid -->
+
+
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,124 @@
+{% extends 'microfinance/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %}Voir Détail Client{% endblock %}
+
+{% block content %}
+
+    
+
+                       <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <div class="media">
+                                                <img class="d-flex mr-3 rounded-circle img-thumbnail thumb-lg" src="{{ object.photo.url }}" alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="mt-0 font-18 mb-1">Mr/Mme {{ object.get_full_name }}</h5>
+                                                    <p class="text-muted font-14">{{ object.profession }}</p>
+
+                                                    <ul class="social-links list-inline mb-0">
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="1234567890"><i class="fa fa-phone"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="@skypename"><i class="fa fa-skype"></i></a>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+
+
+                            </div> <!-- end row -->
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <h4 class="mt-0 header-title">Détails Client N° de Code/ {{ object.pincode }}</h4>
+
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Informations sur Mr/Mme {{ object.get_full_name }}</a>
+                                                </li>
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane active p-3" id="home" role="tabpanel">
+                                                    <h4 class="mt-0 header-title">Infos Basiques</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Noms & Prénoms :</strong><br> {{ object.get_full_name }}.<br>
+                                                        <strong>Date de Naissance :</strong><br> {{ object.datenaiss }}<br>
+                                                        <strong>Sexe :</strong><br> {{ object.sexe }}<br>
+                                                    </p><br>
+
+                                                    <h4 class="mt-0 header-title">Localisation</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Pays :</strong><br> {{ object.pays }}.<br>
+                                                        <strong>Ville :</strong><br> {{ object.ville }}<br>
+                                                        <strong>Province :</strong><br> {{ object.province }}<br>
+                                                        <strong>Département :</strong><br> {{ object.departement }}<br>
+                                                        <strong>Quartier :</strong><br> {{ object.quartier }}<br>
+                                                    </p><br>
+
+                                                    <h4 class="mt-0 header-title">Contacts & Profession</h4>
+                                                    <p class="font-14 mb-0">
+                                                        <strong>Telephone :</strong><br> {{ object.mobile }}.<br>
+                                                        <strong>Email :</strong><br> {{ object.email }}<br>
+                                                        <strong>Profession :</strong><br> {{ object.profession }}<br>
+                                                        <strong>Revenu Annuel :</strong><br> {{ object.revenu_annuel }}<br>
+                                                    </p><br>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="card m-b-20">
+                                        <h4 class="mt-0 header-title">Signature du Client</h4>
+                                        <img class="card-img-top img-fluid" src="{{ object.signature.url }}" alt="Votre signature">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Agence | {{ object.agence }} | {{ object.agence.pincode }}</li>
+                                            <li class="list-group-item">Statut Client | {{ object.status }}</li>
+                                            <li class="list-group-item">Code Pin Client | {{ object.pincode }}</li>
+                                            <li class="list-group-item">Etat Client | {% if object.is_active %} Actif {% else %} Non Actif {% endif %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- end row -->
+
+
+
+
+                        </div><!-- container-fluid -->
+
+
+
+
+
+{% endblock %}
+
+

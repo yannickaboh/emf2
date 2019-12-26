@@ -1,0 +1,78 @@
+{% extends 'microfinance/base.html' %}
+
+
+
+{% block title %}AGENCE{% endblock %}
+
+
+
+{% block content %}
+
+
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <h4 class="mt-0 header-title">Liste des Agences</h4>
+                                            <p class="text-muted m-b-30 font-14">
+                                                Chaque agence doit être répertoriée dans le système.
+                                            </p>
+
+                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Nom</th>
+                                                        <th>Email</th>
+                                                        <th>Gérant</th>
+                                                        <th>Code Pin</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                {% for agence in agence_list %}
+                                                      <tr>
+                                                        <td>
+                                                          <a href="{% url 'microfinance:agence_update' agence.id %}">
+                                                           {{ agence.id }} 
+                                                          </a>
+                                                        </td>
+                                                        <td>{{ agence.nomag }}</td>
+                                                        <td>{{ agence.email }}</td>
+                                                        <td>{{ agence.gerant }}</td>
+                                                        <td>{{ agence.pincode }}</td>
+                                                        <td>
+                                                          <div class="btn-group" role="group" aria-label="...">
+                                                            <a href="{% url 'microfinance:agence_update' agence.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                            <a href="{% url 'microfinance:detail_agence' agence.id %}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+                                                            <!--a href="{% url 'microfinance:agence_delete' agence.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a-->
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                   {% endfor %}
+                                                
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+
+                            
+
+                        </div>
+                        <!-- container-fluid -->
+							
+
+
+
+
+{% endblock %}
+
+

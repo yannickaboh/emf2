@@ -1,0 +1,77 @@
+{% extends 'microfinance/base.html' %}
+
+
+
+{% block title %}PERSONNEL{% endblock %}
+
+
+
+{% block content %}
+
+
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <h4 class="mt-0 header-title">Liste des Membres du Personnel</h4>
+                                            <p class="text-muted m-b-30 font-14">
+                                                Chaque agent doit être répertoriée dans le système.
+                                            </p>
+
+                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Noms & Prénoms</th>
+                                                        <th>Email</th>
+                                                        <th>Noms</th>
+                                                        <th>Prénoms</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+
+                                                {% for test in users_list %}
+                                                      <tr>
+                                                        <td>
+                                                          <a href="#">
+                                                           {{ test.id }} 
+                                                          </a>
+                                                        </td>
+                                                        <td>{{ test.get_username }}</td>
+                                                        <td>{{ test.email }}</td>
+                                                        <td>{{ test.first_name }}</td>
+                                                        <td>{{ test.last_name }}</td>
+                                                        <td>
+                                                          <div class="btn-group" role="group" aria-label="...">
+                                                            
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                   {% endfor %}
+                                                
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+
+                            
+
+                        </div>
+                        <!-- container-fluid -->
+							
+
+
+
+
+{% endblock %}
+
+
