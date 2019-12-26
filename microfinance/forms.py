@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Agence, Client, TypeCompte, Compte
+from .models import Agence, Client, TypeCompte, Compte, Depot, Retrait
 from crispy_forms.helper import FormHelper
 from crispy_forms.bootstrap import StrictButton
 #from bootstrap4_datetime.widgets import DateTimePicker
@@ -447,3 +447,115 @@ class CompteForm(forms.ModelForm):
         model = Compte
         exclude = ['numero', 'numcpte', 'created_at', 'updated_at', 'ajoute_par']
         # Tu customises le champ date de naissance pour ajouter le date picker
+
+
+class DepotForm(forms.ModelForm):
+    """
+    Formulaire d'ajout
+    """
+
+
+    def __init__(self, *args, **kwargs):
+        """
+        Surcharge de l'initialisation du formulaire
+        """
+        super().__init__(*args, **kwargs)
+        # Tu utilises FormHelper pour customiser ton formulaire
+        self.helper = FormHelper()
+        # Tu définis l'id et la classe bootstrap de ton formulaire
+        self.helper.form_class = 'form-horizontal'
+        self.helper.form_id = 'depot-form'
+        # Tu définis la taille des labels et des champs sur la grille
+        self.helper.label_class = 'col-md-2'
+        self.helper.field_class = 'col-md-8'
+        # Tu crées l'affichage de ton formulaire
+        self.helper.layout = Layout(
+            # Le formulaire va contenir 3 onglets
+            TabHolder(
+                
+                # Première etape onglet
+                Tab(
+                    # Label de l'onglet
+                    'Étape 1 - Formulaire de Dépôt',
+                    # Liste des champs à afficher dont les champs supplémentaires
+                    'agence',
+                    'client',
+                    'numcpte',
+                    'montantverse',
+                    'motif',
+                    # Tu rajoutes des boutons "Précédent" et "Valider"
+                    
+                    StrictButton(
+                        '<span class="glyphicon glyphicon-ok" \
+                        aria-hidden="true"></span> %s' % "Soumettre",
+                        type='submit',
+                        css_class='btn-success col-md-offset-12'
+                    )
+                ),
+            ),
+        )
+
+    
+
+    class Meta:
+        # Tu définis le modèle utilisé
+        model = Depot
+        exclude = ['pincode', 'created_at', 'updated_at', 'ajoute_par']
+        # Tu customises le champ date de naissance pour ajouter le date picker
+
+
+class RetraitForm(forms.ModelForm):
+    """
+    Formulaire d'ajout
+    """
+
+
+    def __init__(self, *args, **kwargs):
+        """
+        Surcharge de l'initialisation du formulaire
+        """
+        super().__init__(*args, **kwargs)
+        # Tu utilises FormHelper pour customiser ton formulaire
+        self.helper = FormHelper()
+        # Tu définis l'id et la classe bootstrap de ton formulaire
+        self.helper.form_class = 'form-horizontal'
+        self.helper.form_id = 'retrait-form'
+        # Tu définis la taille des labels et des champs sur la grille
+        self.helper.label_class = 'col-md-2'
+        self.helper.field_class = 'col-md-8'
+        # Tu crées l'affichage de ton formulaire
+        self.helper.layout = Layout(
+            # Le formulaire va contenir 3 onglets
+            TabHolder(
+                
+                # Première etape onglet
+                Tab(
+                    # Label de l'onglet
+                    'Étape 1 - Formulaire de Retrait',
+                    # Liste des champs à afficher dont les champs supplémentaires
+                    'agence',
+                    'client',
+                    'compte',
+                    'montantretire',
+                    'motif',
+                    # Tu rajoutes des boutons "Précédent" et "Valider"
+                    
+                    StrictButton(
+                        '<span class="glyphicon glyphicon-ok" \
+                        aria-hidden="true"></span> %s' % "Soumettre",
+                        type='submit',
+                        css_class='btn-success col-md-offset-12'
+                    )
+                ),
+            ),
+        )
+
+    
+
+    class Meta:
+        # Tu définis le modèle utilisé
+        model = Retrait
+        exclude = ['pincode', 'created_at', 'updated_at', 'ajoute_par']
+        # Tu customises le champ date de naissance pour ajouter le date picker
+
+    

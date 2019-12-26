@@ -108,7 +108,7 @@ class Client(models.Model):
     ajoute_par = models.ForeignKey(User, null=True, blank=True, editable=False, verbose_name="Ajouté par", on_delete="cascade")
 
     def __str__(self):
-        return self.noms
+        return self.noms +' '+ self.prenoms
 
     def get_full_name(self):
         full_name = '%s %s' % (self.noms, self.prenoms)
@@ -219,8 +219,8 @@ class Depot(models.Model):
     agence = models.ForeignKey(Agence, on_delete=models.CASCADE, verbose_name="Agence", blank= True, related_name='agence_depot')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name="Client", blank= True, related_name='client_depot')
     numcpte = models.ForeignKey(Compte, on_delete=models.CASCADE, verbose_name="N°/Cpte", blank= True, related_name='compte_depot')
-    montantverse = models.FloatField( blank=False, verbose_name="Montant Versé")
-    motif = models.CharField(max_length=250, blank=True, unique=False, verbose_name="Motif")
+    montantverse = models.FloatField(blank=False, verbose_name="Montant Versé")
+    motif = models.TextField(max_length=250, blank=True, unique=False, verbose_name="Motif")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date de Création")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de Modification")
     ajoute_par = models.ForeignKey(User, null=True, blank=True, editable=False, verbose_name="Ajouté par", on_delete="cascade")
@@ -245,10 +245,10 @@ pre_save.connect(pre_save_create_pincode_id6, sender=Depot)
 class Retrait(models.Model):
     pincode = models.CharField(max_length=50, verbose_name="Code Pin Retrait", blank= True)
     agence = models.ForeignKey(Agence, on_delete=models.CASCADE, verbose_name="Agence", blank= True, related_name='agence_retrait')
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name="Client", blank= True, related_name='client_retrai')
-    compte = models.ForeignKey(Compte, on_delete=models.CASCADE, verbose_name="N°/Cpte", blank= True, related_name='compte_retrai')
-    montantretire = models.FloatField( blank=False, verbose_name="Montant Retiré")
-    motif = models.CharField(max_length=250, blank=True, unique=False, verbose_name="Motif")
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name="Client", blank= True, related_name='client_retrait')
+    compte = models.ForeignKey(Compte, on_delete=models.CASCADE, verbose_name="N°/Cpte", blank= True, related_name='compte_retrait')
+    montantretire = models.FloatField(blank=False, verbose_name="Montant Retiré")
+    motif = models.TextField(max_length=250, blank=True, unique=False, verbose_name="Motif")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date de Création")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de Modification")
     ajoute_par = models.ForeignKey(User, null=True, blank=True, editable=False, verbose_name="Ajouté par", on_delete="cascade")
@@ -264,5 +264,5 @@ def pre_save_create_pincode_id7(sender, instance, *args, **kwargs):
         instance.pincode = unique_order_pin_retrait(instance)
 
 
-pre_save.connect(pre_save_create_pincode_id7, sender=Depot)
+pre_save.connect(pre_save_create_pincode_id7, sender=Retrait)
 

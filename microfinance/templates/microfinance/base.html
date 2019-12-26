@@ -127,9 +127,11 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-arrow-compress-all"></i> <span> Transactions </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="ui-buttons.html">Dépôts</a></li>
-                                    <li><a href="ui-buttons.html">Retraits</a></li>
-                                    <li><a href="ui-buttons.html">Epargnes</a></li>
+                                    <li><a href="{% url 'microfinance:depot_list' %}">Dépôts</a></li>
+                                    <li><a href="{% url 'microfinance:depot_create' %}">Ajouter un Dépôt</a></li>
+                                    <li><a href="{% url 'microfinance:retrait_list' %}">Retraits</a></li>
+                                    <li><a href="{% url 'microfinance:retrait_create' %}">Ajouter un Retrait</a></li>
+                                    <!--li><a href="ui-buttons.html">Epargnes</a></li-->
                                     <!--li><a href="ui-buttons.html">Prêts</a></li-->
                                 </ul>
                             </li>

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from . import models
 from django.conf import settings
-from .models import Agence
+from .models import Agence, Client, TypeCompte, Compte, Depot, Retrait
 
 # Register your models here.
 
@@ -31,3 +31,8 @@ from .models import Agence
 #admin.site.unregister(User)
 #admin.site.register(User, CustomUserAdmin)
 admin.site.register(models.Agence, )
+admin.site.register(models.Client, )
+admin.site.register(models.TypeCompte, )
+admin.site.register(models.Compte, )
+admin.site.register(models.Depot, )
+admin.site.register(models.Retrait, )

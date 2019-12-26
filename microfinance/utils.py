@@ -124,7 +124,7 @@ def unique_order_pin_depot(instance):
 
 def randomPassword5(stringLength=2):
     """Generate a random password """
-    key01  = 'DEP0'
+    key01  = 'RETR0'
     letters = string.ascii_uppercase
     digits = string.digits
     password = key01

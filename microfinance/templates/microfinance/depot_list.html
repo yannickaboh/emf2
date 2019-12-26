@@ -1,0 +1,78 @@
+{% extends 'microfinance/base.html' %}
+
+
+
+{% block title %}DEPOTS{% endblock %}
+
+
+
+{% block content %}
+
+
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-20">
+                                        <div class="card-body">
+
+                                            <h4 class="mt-0 header-title">Liste des Dépôts</h4>
+                                            <p class="text-muted m-b-30 font-14">
+                                                Chaque dépôt doit être répertoriée dans le système.
+                                            </p>
+
+                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Agence</th>
+                                                        <th>Client</th>
+                                                        <th>Montant Déposé</th>
+                                                        <th>Code Pin</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                {% for depot in depot_list %}
+                                                      <tr>
+                                                        <td>
+                                                          <a href="{% url 'microfinance:depot_update' depot.id %}">
+                                                           {{ depot.id }} 
+                                                          </a>
+                                                        </td>
+                                                        <td>{{ depot.agence }}</td>
+                                                        <td>{{ depot.client }}</td>
+                                                        <td>{{ depot.montantverse }}</td>
+                                                        <td>{{ depot.pincode }}</td>
+                                                        <td>
+                                                          <div class="btn-group" role="group" aria-label="...">
+                                                            <a href="{% url 'microfinance:depot_update' depot.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                            <a href="{% url 'microfinance:detail_depot' depot.id %}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+                                                            <!--a href="{% url 'microfinance:depot_delete' depot.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a-->
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                   {% endfor %}
+                                                
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+
+                            
+
+                        </div>
+                        <!-- container-fluid -->
+							
+
+
+
+
+{% endblock %}
+
+

@@ -51,6 +51,22 @@ urlpatterns = [
     url(r'^personnels/$', views.PersonnelList, name='personnel_list'),
 
 
+    # Add, Update, Delete Type de Depot URLS
+    url(r'^dépôts/$', views.DepotList.as_view(), name='depot_list'),
+    url(r'^creer_dépôt/$', views.DepotCreate.as_view(), name='depot_create'),
+    url(r'^modifier_dépôt/(?P<pk>\d+)/$', views.DepotUpdate.as_view(), name='depot_update'),
+    url(r'^supprimer_dépôt/(?P<pk>\d+)/$', views.DepotDelete.as_view(), name='depot_delete'),
+    url(r'^detail_dépôt/(?P<pk>\d+)/$', views.DepotDetailView.as_view(), name='detail_depot'),
+
+
+    # Add, Update, Delete Type de Compte URLS
+    url(r'^retraits/$', views.RetraitList.as_view(), name='retrait_list'),
+    url(r'^creer_retrait/$', views.RetraitCreate.as_view(), name='retrait_create'),
+    url(r'^modifier_retrait/(?P<pk>\d+)/$', views.RetraitUpdate.as_view(), name='retrait_update'),
+    url(r'^supprimer_retrait/(?P<pk>\d+)/$', views.RetraitDelete.as_view(), name='retrait_delete'),
+    url(r'^detail_retrait/(?P<pk>\d+)/$', views.RetraitDetailView.as_view(), name='detail_retrait'),
+
+
 
     
 

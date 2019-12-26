@@ -11,12 +11,12 @@ from django.urls import reverse_lazy
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.forms import ModelForm
-from .forms import UserForm, AgenceForm, ClientForm, TypeCompteForm, CompteForm
+from .forms import UserForm, AgenceForm, ClientForm, TypeCompteForm, CompteForm, DepotForm, RetraitForm
 import re
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-from .models import Agence, Client, TypeCompte, Compte
+from .models import Agence, Client, TypeCompte, Compte, Depot, Retrait
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
@@ -54,7 +54,10 @@ def acceuil(request):
 	agences_list = Agence.objects.count()
 	clients_list = Client.objects.count()
 	comptes_list = Compte.objects.count()
-	return render(request, 'microfinance/acceuil.html', {"agences": agences_list, "clients": clients_list, "comptes": comptes_list })
+	depots_list = Depot.objects.count()
+	retraits_list = Retrait.objects.count()
+	return render(request, 'microfinance/acceuil.html', {"agences": agences_list, "clients": clients_list, 
+		"comptes": comptes_list, "depots": depots_list, "retraits": retraits_list, })
 
 
 
@@ -196,3 +199,64 @@ class UsersView(TemplateView):
 def PersonnelList(request):
 	users_list = get_user_model().objects.all()
 	return render(request, 'microfinance/personnel_list.html', {'users_list': users_list})
+
+
+
+# Depot CRUD
+
+class DepotList(ListView):
+	model = Depot
+
+
+class DepotCreate(CreateView):
+	model = Depot
+	form_class = DepotForm
+	success_url = reverse_lazy('microfinance:depot_list')
+
+class DepotUpdate(UpdateView):
+	model = Depot
+	form_class = DepotForm
+	success_url = reverse_lazy('microfinance:depot_list')
+
+class DepotDelete(DeleteView):
+	model = Depot
+	success_url = reverse_lazy('microfinance:depot_list')
+
+class DepotDetailView(DetailView):
+
+    model = Depot
+    success_url = reverse_lazy('microfinance:depot_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+# Retrait CRUD
+
+class RetraitList(ListView):
+	model = Retrait
+
+
+class RetraitCreate(CreateView):
+	model = Retrait
+	form_class = RetraitForm
+	success_url = reverse_lazy('microfinance:retrait_list')
+
+class RetraitUpdate(UpdateView):
+	model = Retrait
+	form_class = RetraitForm
+	success_url = reverse_lazy('microfinance:retrait_list')
+
+class RetraitDelete(DeleteView):
+	model = Retrait
+	success_url = reverse_lazy('microfinance:retrait_list')
+
+class RetraitDetailView(DetailView):
+
+    model = Retrait
+    success_url = reverse_lazy('microfinance:retrait_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
