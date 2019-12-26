@@ -25,6 +25,9 @@ SECRET_KEY = 'uj^g)cqhef$&njyf5psb7c-#6&ji#n8o4pe43qqyy*9j(eq81h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+username = 'emf2'
+token = '4ba213c7af7d213adc01d487ecdb5834c514ee65'
+
 ALLOWED_HOSTS = ['localhost', '*']
 
 PHOTO_PATH = 'static/images/users'
